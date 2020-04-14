@@ -1,0 +1,13 @@
+<h1><%= "Booking #{@booking.id}"%></h1>
+<ul>
+    <li><%= "Flight id: #{@booking.flight.id}" %></li>
+    <li><%= "Date: #{@booking.flight.date} at #{@booking.flight.hour}" %></li>
+    <li><%= "Departure: #{@booking.flight.from_airport.code}" %></li>
+    <li><%= "Destination: #{@booking.flight.to_airport.code}" %></li>
+    <li>Passengers:</li>
+    <ul>
+    <% @booking.passengers.find_each do |p|%>
+        <li><%= p.name%></li>
+    <%end%>
+    </ul>
+</ul>

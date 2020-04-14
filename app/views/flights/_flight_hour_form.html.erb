@@ -1,0 +1,10 @@
+<h3>
+    <%= "Flights from #{@info.from_airport.code} 
+    to #{@info.to_airport.code} on #{@info.date}"%> 
+</h3>
+
+<%=form_with url: new_booking_path, method: :get, local: true do%>
+    <%= hidden_field_tag :passengers, params[:passengers] %>
+    <%= collection_radio_buttons :flight, :id, @selected_flights, :id, :hour %><br>
+    <%= submit_tag 'Book it!'%>
+<%end%>

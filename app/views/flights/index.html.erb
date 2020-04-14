@@ -1,0 +1,21 @@
+<h1>Flights</h1>
+
+
+
+<%= form_with url: root_path, method: :get, local: true do %>
+
+    <%= label_tag :departure, 'Departure:' %>
+    <%= select_tag :from_airport, options_from_collection_for_select(Airport.all, :id, :code)%>
+    <%= label_tag :arrival, 'Arrival:' %>
+    <%= select_tag :to_airport, options_from_collection_for_select(Airport.all, :id, :code)%>
+    <%= label_tag :passengers, 'Number of Passengers:'%>
+    <%= select_tag :passengers, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4]])%>
+    <%= label_tag :date, 'Date:'%>
+    <%= select_tag :date, options_for_select(Flight.dates) %>
+
+    <%= submit_tag 'Search'%>
+<%end%>
+
+<%unless @selected_flights.nil? || @selected_flights.empty?%>
+    <%= render 'flight_hour_form'%>
+<%end%>

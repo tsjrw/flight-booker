@@ -1,0 +1,23 @@
+<h1>Booking</h1>
+<ul>
+    <li><%= "Flight id: #{@flight.id}" %></li>
+    <li><%= "Date: #{@flight.date} at #{@flight.hour}" %></li>
+    <li><%= "Departure: #{@flight.from_airport.code}" %></li>
+    <li><%= "Destination: #{@flight.to_airport.code}" %></li>
+</ul>
+
+<%= form_with model: Booking.new, url: bookings_path, local: true do |f|%>
+    <%= f.hidden_field :flight_id, value: @flight.id %>
+    Passengers:
+    <ul>
+    <%= f.fields_for :passengers, @booking.passengers do |p|%>
+        <li>
+            <%= p.label :name, 'Name: '%>
+            <%= p.text_field :name %><br>
+            <%= p.label :email, 'Email: '%>
+            <%= p.email_field :email %>
+        </li>
+    <%end%>
+    </ul>
+    <%= f.submit 'Book it!' %>
+<% end %>
