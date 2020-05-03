@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem 'figaro'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -42,6 +43,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   gem 'hirb'
+  gem 'letter_opener'
+  gem 'letter_opener_web', '~> 1.0'
 end
 
 group :test do
